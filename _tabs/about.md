@@ -4,7 +4,7 @@ description: Offensive security professional specializing in penetration testing
 permalink: /about/
 ---
 
-I’m **Yacine Rahmoun** — an offensive security professional specializing in penetration testing, red teaming, and vulnerability research.
+I’m **Yacine** — an offensive security professional specializing in penetration testing, red teaming, and vulnerability research.
 
 With experience spanning web and API security, Active Directory exploitation, mobile application testing, and network penetration testing, I approach engagements with a full-stack attacker’s perspective. I’ve disclosed 200+ valid vulnerabilities across major bug bounty platforms including HackerOne, Bugcrowd, Intigriti, and Yogosha, and I’m a vetted member of the Synack Red Team.
 
