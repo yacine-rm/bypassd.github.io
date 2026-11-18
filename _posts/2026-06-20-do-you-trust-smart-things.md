@@ -4,9 +4,7 @@ date: 2026-06-20 18:00:00 +0100
 categories: [Security, IoT]
 tags: [iot, smart-lock, writeup, account-takeover, idor, authentication, mobile-security]
 description: A review of a smart-lock cloud turned into a chain of authorization bypasses, weak authentication decisions, and one very familiar lesson about trust.
-media_subpath: /assets/images/smart-things
-image:
-  path: photo_2026-06-20_16-13-34.jpg
+cover_image: "/assets/images/smart-things/photo_2026-06-20_16-13-34.jpg"
 pin: false
 toc: true
 comments: true
