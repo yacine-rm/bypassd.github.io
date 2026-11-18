@@ -1,0 +1,15 @@
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+    {% include logo.html %}
+  </a>
+  <a class="brand-name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <nav class="primary-nav" aria-label="Primary navigation">
+    <a href="{{ '/' | relative_url }}" class="{% if include.active == 'blog' %}is-active{% endif %}">blog</a>
+    <a href="{{ '/archives/' | relative_url }}" class="{% if include.active == 'archives' %}is-active{% endif %}">archives</a>
+    {% if site.social.discord and site.social.discord != "" %}
+      <a href="{{ site.social.discord }}" target="_blank" rel="noreferrer">discord</a>
+    {% endif %}
+    <a href="{{ '/about/' | relative_url }}" class="{% if include.active == 'about' %}is-active{% endif %}">about</a>
+  </nav>
+</header>
+

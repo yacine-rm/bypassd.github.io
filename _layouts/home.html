@@ -1,0 +1,38 @@
+---
+layout: default
+---
+<main class="site-main">
+  {% include header.html active="blog" %}
+
+  {% if site.posts.size > 0 %}
+    <section class="post-list" aria-label="Latest posts" data-post-list>
+      {% for post in site.posts %}
+        {% include post-card.html post=post index=forloop.index0 %}
+      {% endfor %}
+    </section>
+
+    <nav class="pagination" aria-label="Post pages" data-pagination hidden>
+      <button class="pagination-button" type="button" data-page-prev aria-label="Newer posts">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <span class="pagination-status" aria-live="polite">
+        <span data-page-current>1</span> / <span data-page-total>1</span>
+      </span>
+      <button class="pagination-button" type="button" data-page-next aria-label="Older posts">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </nav>
+  {% else %}
+    <section class="empty-state">
+      <p>No posts yet.</p>
+      <p>Create your first article in <code>_posts/YYYY-MM-DD-title.md</code>.</p>
+    </section>
+  {% endif %}
+
+  {% include footer.html %}
+</main>
+

@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<main class="site-main">
+  {% include header.html active="archives" %}
+
+  <section class="archive">
+    <header class="page-header">
+      <h1>{{ page.title | default: "Archives" }}</h1>
+      {% if page.description %}
+        <p class="page-description">{{ page.description }}</p>
+      {% endif %}
+    </header>
+
+    {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+    {% for year in posts_by_year %}
+      <section class="archive-year">
+        <h2>{{ year.name }}</h2>
+        <ol>
+          {% for post in year.items %}
+            <li>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d" }}</time>
+            </li>
+          {% endfor %}
+        </ol>
+      </section>
+    {% endfor %}
+  </section>
+
+  {% include footer.html %}
+</main>
+

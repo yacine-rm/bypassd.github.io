@@ -1,43 +1,65 @@
-# Chirpy Starter
+# bypassd.cc
 
-[![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)][gem]&nbsp;
-[![GitHub license](https://img.shields.io/github/license/cotes2020/chirpy-starter.svg?color=blue)][mit]
+A custom Jekyll blog inspired by the compact, editorial layout of Sam Curry's site. It keeps the content workflow simple: articles live in `_posts` and standalone pages live in `_tabs`.
 
-When installing the [**Chirpy**][chirpy] theme through [RubyGems.org][gem], Jekyll can only read files in the folders
-`_data`, `_layouts`, `_includes`, `_sass` and `assets`, as well as a small part of options of the `_config.yml` file
-from the theme's gem. If you have ever installed this theme gem, you can use the command
-`bundle info --path jekyll-theme-chirpy` to locate these files.
+## Write an article
 
-The Jekyll team claims that this is to leave the ball in the user’s court, but this also results in users not being
-able to enjoy the out-of-the-box experience when using feature-rich themes.
+Create a file named `_posts/YYYY-MM-DD-slug.md`:
 
-To fully use all the features of **Chirpy**, you need to copy the other critical files from the theme's gem to your
-Jekyll site. The following is a list of targets:
+```markdown
+---
+title: "Article title"
+date: 2026-11-18 10:00:00 +0100
+description: "Summary shown on the blog index and search previews."
+cover_image: "/assets/images/example.png"
+cover_alt: "Description of the cover image"
+categories:
+  - security
+tags:
+  - web
+---
 
-```shell
-.
-├── _config.yml
-├── _plugins
-├── _tabs
-└── index.html
+Your Markdown starts here.
 ```
 
-To save you time, and also in case you lose some files while copying, we extract those files/configurations of the
-latest version of the **Chirpy** theme and the [CD][CD] workflow to here, so that you can start writing in minutes.
+The article URL is generated from the filename. For example, `_posts/2026-11-18-my-finding.md` is published at `/my-finding/`.
 
-## Usage
+`image` and `image_alt` also work as aliases for Chirpy-style front matter:
 
-Check out the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy/wiki).
+```yaml
+image: "/assets/images/example.png"
+image_alt: "Description of the cover image"
+```
 
-## Contributing
+## Pages
 
-This repository is automatically updated with new releases from the theme repository. If you encounter any issues or want to contribute to its improvement, please visit the [theme repository][chirpy] to provide feedback.
+- About page: `_tabs/about.md`
+- Archive page: `_tabs/archives.md`
+- Add another page by creating a Markdown file in `_tabs` with a `title` and `permalink`.
 
-## License
+## Local preview
 
-This work is published under [MIT][mit] License.
+If Ruby is installed:
 
-[gem]: https://rubygems.org/gems/jekyll-theme-chirpy
-[chirpy]: https://github.com/cotes2020/jekyll-theme-chirpy/
-[CD]: https://en.wikipedia.org/wiki/Continuous_deployment
-[mit]: https://github.com/cotes2020/chirpy-starter/blob/master/LICENSE
+```bash
+bundle install
+bundle exec jekyll serve
+```
+
+Then open <http://localhost:4000>.
+
+Without Ruby installed, use the Jekyll container:
+
+```bash
+docker run --rm --volume "$PWD:/srv/jekyll" -p 4000:4000 jekyll/jekyll jekyll serve --livereload
+```
+
+## GitHub Pages
+
+1. Create a GitHub repository and push this project to its `main` branch.
+2. In the repository, open **Settings → Pages** and set the source to **GitHub Actions**.
+3. Push to `main`. The included workflow builds and deploys the site.
+4. Keep the `CNAME` file set to `bypassd.cc`, and point the domain's DNS records to GitHub Pages as required by GitHub.
+
+Do not use a GitHub Pages "theme" setting. This project includes all layouts and styles directly.
+

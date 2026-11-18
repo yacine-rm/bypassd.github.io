@@ -1,0 +1,31 @@
+{% assign post = include.post %}
+{% assign words = post.content | strip_html | number_of_words %}
+{% assign minutes = words | plus: 179 | divided_by: 180 %}
+{% assign excerpt_text = post.description | default: post.excerpt %}
+{% assign cover = post.cover_image | default: post.image | default: "/assets/images/default-cover.svg" %}
+{% assign cover_alt = post.cover_alt | default: post.image_alt | default: "" %}
+
+<article class="post-card" data-post-card data-post-index="{{ include.index }}">
+  <a class="post-card-link" href="{{ post.url | relative_url }}">
+    <figure class="post-card-media">
+      {% if cover contains "://" %}
+        <img src="{{ cover }}" alt="{{ cover_alt }}" width="168" height="108" loading="{% if include.index < 2 %}eager{% else %}lazy{% endif %}">
+      {% else %}
+        <img src="{{ cover | relative_url }}" alt="{{ cover_alt }}" width="168" height="108" loading="{% if include.index < 2 %}eager{% else %}lazy{% endif %}">
+      {% endif %}
+    </figure>
+
+    <div class="post-card-copy">
+      <h2>{{ post.title }}</h2>
+      <div class="post-card-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ minutes | at_least: 1 }} min read</span>
+      </div>
+      {% if excerpt_text %}
+        <p>{{ excerpt_text | strip_html | normalize_whitespace | truncate: 240 }}</p>
+      {% endif %}
+    </div>
+  </a>
+</article>
+

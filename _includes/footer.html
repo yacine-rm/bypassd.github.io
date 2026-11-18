@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <a href="{{ '/' | relative_url }}">Home</a>
+  {% if site.social.twitter and site.social.twitter != "" %}
+    <a href="{{ site.social.twitter }}" target="_blank" rel="noreferrer">Twitter</a>
+  {% endif %}
+  {% if site.social.github and site.social.github != "" %}
+    <a href="{{ site.social.github }}" target="_blank" rel="noreferrer">GitHub</a>
+  {% endif %}
+  <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+</footer>
+
