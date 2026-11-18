@@ -1,6 +1,6 @@
 # bypassd.cc
 
-A custom Jekyll blog inspired by the compact, editorial layout of Sam Curry's site. It keeps the content workflow simple: articles live in `_posts` and standalone pages live in `_tabs`.
+A custom Jekyll blog.
 
 ## Write an article
 
